@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Star, Send, User } from "lucide-react";
+import { Star, Send, User, Loader2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+
+const JSONBIN_BASE_URL = "https://api.jsonbin.io/v3";
+const BIN_ID = import.meta.env.VITE_JSONBIN_BIN_ID as string;
+const API_KEY = import.meta.env.VITE_JSONBIN_API_KEY as string;
 
 interface Review {
   id: number;
@@ -40,6 +44,29 @@ const initialReviews: Review[] = [
     rating: 5,
   },
 ];
+
+const fetchReviews = async (): Promise<Review[]> => {
+  if (!BIN_ID) throw new Error("JSONBin bin ID not configured");
+  const response = await fetch(`${JSONBIN_BASE_URL}/b/${BIN_ID}/latest`, {
+    headers: { "X-Master-Key": API_KEY },
+  });
+  if (!response.ok) throw new Error("Failed to fetch reviews");
+  const data = await response.json();
+  return data.record.reviews || [];
+};
+
+const saveReviews = async (reviews: Review[]): Promise<void> => {
+  if (!BIN_ID) throw new Error("JSONBin bin ID not configured");
+  const response = await fetch(`${JSONBIN_BASE_URL}/b/${BIN_ID}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Master-Key": API_KEY,
+    },
+    body: JSON.stringify({ reviews }),
+  });
+  if (!response.ok) throw new Error("Failed to save reviews");
+};
 
 const StarRating = ({ 
   rating, 
@@ -78,12 +105,33 @@ const TestimonialSection = () => {
   const [reviews, setReviews] = useState<Review[]>(initialReviews);
   const [newReview, setNewReview] = useState({ name: "", text: "", rating: 5 });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    const loadReviews = async () => {
+      if (!BIN_ID || !API_KEY) {
+        setIsLoading(false);
+        return;
+      }
+      try {
+        const data = await fetchReviews();
+        setReviews(data.length > 0 ? data : initialReviews);
+      } catch {
+        setError("Failed to load reviews");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadReviews();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newReview.name.trim() || !newReview.text.trim()) return;
 
     setIsSubmitting(true);
+    setError(null);
 
     const review: Review = {
       id: Date.now(),
@@ -98,16 +146,42 @@ const TestimonialSection = () => {
       rating: newReview.rating,
     };
 
-    setReviews([review, ...reviews]);
-    setNewReview({ name: "", text: "", rating: 5 });
-    setIsSubmitting(false);
+    try {
+      const updatedReviews = [review, ...reviews];
+      await saveReviews(updatedReviews);
+      setReviews(updatedReviews);
+      setNewReview({ name: "", text: "", rating: 5 });
+    } catch {
+      setError("Failed to submit review. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const averageRating = reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length;
 
+  if (isLoading) {
+    return (
+      <section id="testimonials" className="section-padding bg-background">
+        <div className="container mx-auto">
+          <div className="flex justify-center items-center py-20">
+            <Loader2 className="animate-spin text-accent" size={32} />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="testimonials" className="section-padding bg-background">
       <div className="container mx-auto">
+        {error && (
+          <div className="max-w-xl mx-auto mb-6 bg-destructive/10 text-destructive rounded-lg p-3 flex items-center gap-2">
+            <AlertCircle size={16} />
+            <span className="text-sm font-sans">{error}</span>
+          </div>
+        )}
+
         <div className="text-center mb-10">
           <p className="section-title">Testimonial</p>
           <h2 className="section-heading">Regards From Travelers</h2>
