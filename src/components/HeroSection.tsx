@@ -38,10 +38,10 @@ const HeroSection = () => {
 
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[80vh] py-32">
+          <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[60vh] lg:min-h-[80vh] py-16 sm:py-20 lg:py-32">
             <motion.div
               style={{ y: textY, opacity }}
-              className="lg:col-span-7 space-y-8"
+              className="lg:col-span-7 space-y-6 sm:space-y-8"
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
