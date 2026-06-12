@@ -19,7 +19,7 @@ const HeroSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100dvh] flex items-center overflow-hidden"
+      className="relative min-h-[100dvh] flex items-center overflow-hidden pt-20 lg:pt-0"
     >
       <div className="absolute inset-0">
         <motion.div

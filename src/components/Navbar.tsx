@@ -79,7 +79,7 @@ const Navbar = () => {
               : "py-5"
           }`}
         >
-          <Link to="/" className="flex items-center gap-1.5 group">
+          <Link to="/" className={`flex items-center gap-1.5 group ${mobileOpen ? "lg:flex hidden" : ""}`}>
             <span className="font-['Playfair_Display'] text-lg md:text-xl font-bold text-foreground tracking-tight">
               Tour De
             </span>
@@ -151,7 +151,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
@@ -159,7 +159,7 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-              className="fixed top-0 right-0 bottom-0 z-40 w-full max-w-sm bg-background shadow-2xl lg:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 z-[60] w-full max-w-sm bg-background shadow-2xl lg:hidden overflow-y-auto"
             >
               <div className="flex flex-col min-h-full">
                 <div className="flex items-center justify-between p-6 border-b border-border/50">
