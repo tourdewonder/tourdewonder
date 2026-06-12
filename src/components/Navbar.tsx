@@ -31,7 +31,7 @@ const Navbar = () => {
           : "bg-card/80 backdrop-blur-sm py-4"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-6">
+      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6">
         <a href="#" className="flex items-center gap-2">
           <span className="font-serif text-xl md:text-2xl font-bold text-foreground">
             Tour De <span className="text-primary">WONDER</span>

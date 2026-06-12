@@ -107,13 +107,13 @@ const NaturalSpringsLakesSection = () => {
                       View Details
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+                  <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto mx-4 sm:mx-auto">
                     {selectedLake && (
                       <>
                         <DialogHeader>
-                          <DialogTitle className="text-2xl font-serif">{selectedLake.name}</DialogTitle>
+                          <DialogTitle className="text-xl sm:text-2xl font-serif">{selectedLake.name}</DialogTitle>
                           <div className="flex items-center gap-2 mt-2">
-                            <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
+                            <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs sm:text-sm">
                               {selectedLake.category}
                             </span>
                           </div>
@@ -122,25 +122,25 @@ const NaturalSpringsLakesSection = () => {
                           <img 
                             src={selectedLake.image} 
                             alt={selectedLake.name} 
-                            className="w-full h-64 object-cover rounded-lg"
+                            className="w-full h-48 sm:h-64 object-cover rounded-lg"
                           />
                           
-                          <div className="grid grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                             <div className="bg-muted p-3 rounded-lg">
-                              <p className="text-sm text-muted-foreground">Location</p>
-                              <p className="font-semibold text-sm">{selectedLake.location}</p>
+                              <p className="text-xs sm:text-sm text-muted-foreground">Location</p>
+                              <p className="font-semibold text-xs sm:text-sm">{selectedLake.location}</p>
                             </div>
                             <div className="bg-muted p-3 rounded-lg">
-                              <p className="text-sm text-muted-foreground">Altitude</p>
-                              <p className="font-semibold text-sm">{selectedLake.altitude}</p>
+                              <p className="text-xs sm:text-sm text-muted-foreground">Altitude</p>
+                              <p className="font-semibold text-xs sm:text-sm">{selectedLake.altitude}</p>
                             </div>
                             <div className="bg-muted p-3 rounded-lg">
-                              <p className="text-sm text-muted-foreground">Water Source</p>
-                              <p className="font-semibold text-sm">{selectedLake.waterSource}</p>
+                              <p className="text-xs sm:text-sm text-muted-foreground">Water Source</p>
+                              <p className="font-semibold text-xs sm:text-sm">{selectedLake.waterSource}</p>
                             </div>
                             <div className="bg-muted p-3 rounded-lg">
-                              <p className="text-sm text-muted-foreground">Best Time</p>
-                              <p className="font-semibold text-sm">{selectedLake.bestTimeToVisit}</p>
+                              <p className="text-xs sm:text-sm text-muted-foreground">Best Time</p>
+                              <p className="font-semibold text-xs sm:text-sm">{selectedLake.bestTimeToVisit}</p>
                             </div>
                           </div>
                           

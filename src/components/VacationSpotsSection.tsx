@@ -16,14 +16,14 @@ const VacationSpotsSection = () => {
   return (
     <section className="section-padding bg-background">
       <div className="container mx-auto">
-        <div className="flex items-center justify-between mb-10 flex-wrap gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 sm:mb-10 gap-4">
           <div>
             <h2 className="section-heading">Desired Vacation Spots</h2>
             <p className="text-muted-foreground font-sans mt-2 max-w-xl">
               Explore handpicked destinations designed to offer comfort, beauty, and unforgettable experiences.
             </p>
           </div>
-          <Link to="/booking" className="btn-outline-primary text-xs">View All Destination</Link>
+          <Link to="/booking" className="btn-outline-primary text-xs self-start sm:self-auto">View All Destination</Link>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5">
@@ -45,7 +45,7 @@ const VacationSpotsSection = () => {
               <span className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-sans font-semibold px-3 py-1 rounded-lg">
                 {spot.tours} Tour{spot.tours > 1 ? "s" : ""}
               </span>
-              <h3 className="absolute bottom-4 left-4 text-2xl font-serif font-bold text-primary-foreground">
+              <h3 className="absolute bottom-4 left-4 text-xl sm:text-2xl font-serif font-bold text-primary-foreground">
                 {spot.name}
               </h3>
             </motion.div>

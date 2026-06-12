@@ -28,7 +28,7 @@ const HouseboatsSection = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
-            <img src={img} alt="Kashmir houseboat on Dal Lake" className="rounded-2xl w-full h-80 lg:h-96 object-cover shadow-lg" />
+            <img src={img} alt="Kashmir houseboat on Dal Lake" className="rounded-2xl w-full h-64 sm:h-80 lg:h-96 object-cover shadow-lg" />
             <span className="absolute top-4 right-4 bg-accent text-accent-foreground text-sm font-semibold px-4 py-2 rounded-xl">
               1+ Packages
             </span>

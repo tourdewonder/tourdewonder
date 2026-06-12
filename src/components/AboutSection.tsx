@@ -38,10 +38,10 @@ const AboutSection = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="grid grid-cols-2 gap-3"
           >
-            <img src={img1} alt="Srinagar Dal Lake" className="rounded-2xl w-full h-48 object-cover" />
-            <img src={img2} alt="Pahalgam valley" className="rounded-2xl w-full h-48 object-cover mt-8" />
-            <img src={img3} alt="Kashmir tulip garden" className="rounded-2xl w-full h-48 object-cover" />
-            <img src={img4} alt="Kashmir sunset" className="rounded-2xl w-full h-48 object-cover mt-8" />
+            <img src={img1} alt="Srinagar Dal Lake" className="rounded-2xl w-full h-40 sm:h-48 object-cover" />
+            <img src={img2} alt="Pahalgam valley" className="rounded-2xl w-full h-40 sm:h-48 object-cover mt-0 sm:mt-8" />
+            <img src={img3} alt="Kashmir tulip garden" className="rounded-2xl w-full h-40 sm:h-48 object-cover" />
+            <img src={img4} alt="Kashmir sunset" className="rounded-2xl w-full h-40 sm:h-48 object-cover mt-0 sm:mt-8" />
           </motion.div>
         </div>
       </div>

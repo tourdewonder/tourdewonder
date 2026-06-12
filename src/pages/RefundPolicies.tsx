@@ -6,7 +6,7 @@ const RefundPolicies = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="bg-primary text-primary-foreground py-8">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <Link 
             to="/" 
             className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-accent transition-colors mb-6"
@@ -14,12 +14,12 @@ const RefundPolicies = () => {
             <ArrowLeft size={18} />
             Back to Home
           </Link>
-          <h1 className="font-serif text-3xl md:text-4xl font-bold">Refund Policies</h1>
+          <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold">Refund Policies</h1>
         </div>
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <div className="max-w-3xl mx-auto space-y-8">
           
           {/* Cancellation Policy */}

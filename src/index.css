@@ -72,7 +72,7 @@
 
 @layer components {
   .section-padding {
-    @apply py-16 md:py-24 px-4 md:px-6;
+    @apply py-10 sm:py-16 md:py-24 px-4 sm:px-6;
   }
 
   .section-title {

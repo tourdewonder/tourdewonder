@@ -233,7 +233,7 @@ _This is an automated request from the Tour De WONDER website._`;
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <div className="pt-24 pb-12 container mx-auto px-6">
+        <div className="pt-24 pb-12 container mx-auto px-4 sm:px-6">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -306,12 +306,12 @@ _This is an automated request from the Tour De WONDER website._`;
       
       {/* Hero Banner */}
       <div className="relative pt-20 bg-gradient-to-r from-primary/20 via-primary/10 to-background">
-        <div className="container mx-auto px-6 py-12">
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <motion.button
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4 sm:mb-6 transition-colors"
           >
             <ArrowLeft size={18} /> Back to Home
           </motion.button>
@@ -319,7 +319,7 @@ _This is an automated request from the Tour De WONDER website._`;
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-3 sm:mb-4"
           >
             {serviceType === "tour" ? "Book Your Dream Tour" : serviceType === "ride" ? "Book Your Ride" : "Book Your Hotel"}
           </motion.h1>
@@ -328,7 +328,7 @@ _This is an automated request from the Tour De WONDER website._`;
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-muted-foreground max-w-2xl"
+            className="text-base sm:text-lg text-muted-foreground max-w-2xl"
           >
             {serviceType === "tour" 
               ? "Choose your preferred booking method and let us help you create unforgettable memories in Kashmir."
@@ -341,54 +341,54 @@ _This is an automated request from the Tour De WONDER website._`;
 
       {/* Lake Details Section */}
       {lakeData && (
-        <div className="bg-muted/30 py-8">
-          <div className="container mx-auto px-6">
+        <div className="bg-muted/30 py-6 sm:py-8">
+          <div className="container mx-auto px-4 sm:px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="bg-background rounded-2xl overflow-hidden shadow-lg"
             >
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-64 md:h-auto">
+                <div className="relative h-48 sm:h-64 md:h-auto">
                   <img
                     src={lakeData.image}
                     alt={lakeData.name}
                     className="w-full h-full object-cover"
                   />
-                  <span className="absolute top-4 left-4 bg-primary text-primary-foreground text-sm font-semibold px-3 py-1 rounded-lg">
+                  <span className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-primary text-primary-foreground text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 rounded-lg">
                     {lakeData.category}
                   </span>
                 </div>
-                <div className="p-6 md:p-8">
-                  <h2 className="text-2xl font-serif font-bold mb-4">{lakeData.name}</h2>
+                <div className="p-4 sm:p-6 md:p-8">
+                  <h2 className="text-xl sm:text-2xl font-serif font-bold mb-3 sm:mb-4">{lakeData.name}</h2>
                   
-                  <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <div className="flex items-start gap-2">
-                      <MapPin className="h-5 w-5 text-primary mt-0.5" />
+                      <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5" />
                       <div>
-                        <p className="text-sm text-muted-foreground">Location</p>
-                        <p className="font-semibold text-sm">{lakeData.location}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">Location</p>
+                        <p className="font-semibold text-xs sm:text-sm">{lakeData.location}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Building2 className="h-5 w-5 text-primary mt-0.5" />
+                      <Building2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5" />
                       <div>
-                        <p className="text-sm text-muted-foreground">Altitude</p>
-                        <p className="font-semibold text-sm">{lakeData.altitude}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">Altitude</p>
+                        <p className="font-semibold text-xs sm:text-sm">{lakeData.altitude}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
+                      <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-600 mt-0.5" />
                       <div>
-                        <p className="text-sm text-muted-foreground">Water Source</p>
-                        <p className="font-semibold text-sm">{lakeData.waterSource}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">Water Source</p>
+                        <p className="font-semibold text-xs sm:text-sm">{lakeData.waterSource}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Calendar className="h-5 w-5 text-orange-500 mt-0.5" />
+                      <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-orange-500 mt-0.5" />
                       <div>
-                        <p className="text-sm text-muted-foreground">Best Time</p>
-                        <p className="font-semibold text-sm">{lakeData.bestTimeToVisit}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">Best Time</p>
+                        <p className="font-semibold text-xs sm:text-sm">{lakeData.bestTimeToVisit}</p>
                       </div>
                     </div>
                   </div>
@@ -410,11 +410,11 @@ _This is an automated request from the Tour De WONDER website._`;
       )}
 
       {/* Service Type Selection: Tour, Ride, or Hotel */}
-      <div className="container mx-auto px-6 py-8">
-        <div className="flex justify-center gap-3 mb-8">
+      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
           <button
             onClick={() => handleServiceTypeChange("tour")}
-            className={`px-6 py-3 rounded-xl font-sans text-sm font-medium transition-all flex items-center gap-2 ${
+            className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-sans text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-2 ${
               serviceType === "tour"
                 ? "bg-primary text-primary-foreground shadow-lg"
                 : "bg-card text-foreground hover:bg-primary/10 border border-border"
@@ -425,7 +425,7 @@ _This is an automated request from the Tour De WONDER website._`;
           </button>
           <button
             onClick={() => handleServiceTypeChange("ride")}
-            className={`px-6 py-3 rounded-xl font-sans text-sm font-medium transition-all flex items-center gap-2 ${
+            className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-sans text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-2 ${
               serviceType === "ride"
                 ? "bg-primary text-primary-foreground shadow-lg"
                 : "bg-card text-foreground hover:bg-primary/10 border border-border"
@@ -436,7 +436,7 @@ _This is an automated request from the Tour De WONDER website._`;
           </button>
           <button
             onClick={() => handleServiceTypeChange("hotel")}
-            className={`px-6 py-3 rounded-xl font-sans text-sm font-medium transition-all flex items-center gap-2 ${
+            className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-sans text-xs sm:text-sm font-medium transition-all flex items-center justify-center gap-2 ${
               serviceType === "hotel"
                 ? "bg-primary text-primary-foreground shadow-lg"
                 : "bg-card text-foreground hover:bg-primary/10 border border-border"
@@ -449,27 +449,27 @@ _This is an automated request from the Tour De WONDER website._`;
       </div>
 
       {/* Booking Options */}
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-2 gap-4 mb-8 max-w-3xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-8 max-w-3xl mx-auto">
           <button
             onClick={() => setBookingType("full")}
-            className={`p-6 rounded-2xl border-2 transition-all text-left ${
+            className={`p-4 sm:p-6 rounded-2xl border-2 transition-all text-left ${
               bookingType === "full"
                 ? "border-primary bg-primary/5 shadow-lg"
                 : "border-border hover:border-primary/50"
             }`}
           >
-            <div className="flex items-start gap-4">
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${
                 bookingType === "full" ? "bg-primary text-primary-foreground" : "bg-muted"
               }`}>
-                <Calendar className="w-6 h-6" />
+                <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div>
-                <h3 className="font-serif font-semibold text-lg text-foreground mb-1">
+                <h3 className="font-serif font-semibold text-base sm:text-lg text-foreground mb-1">
                   Full Booking Form
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   Complete form with all details for a detailed tour plan
                 </p>
               </div>
@@ -478,23 +478,23 @@ _This is an automated request from the Tour De WONDER website._`;
 
           <button
             onClick={() => setBookingType("quick")}
-            className={`p-6 rounded-2xl border-2 transition-all text-left ${
+            className={`p-4 sm:p-6 rounded-2xl border-2 transition-all text-left ${
               bookingType === "quick"
                 ? "border-primary bg-primary/5 shadow-lg"
                 : "border-border hover:border-primary/50"
             }`}
           >
-            <div className="flex items-start gap-4">
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+            <div className="flex items-start gap-3 sm:gap-4">
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${
                 bookingType === "quick" ? "bg-primary text-primary-foreground" : "bg-muted"
               }`}>
-                <Phone className="w-6 h-6" />
+                <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div>
-                <h3 className="font-serif font-semibold text-lg text-foreground mb-1">
+                <h3 className="font-serif font-semibold text-base sm:text-lg text-foreground mb-1">
                   Quick Call Booking
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   Just leave your number, we'll call you shortly
                 </p>
               </div>
@@ -658,7 +658,7 @@ _This is an automated request from the Tour De WONDER website._`;
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-primary text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -757,7 +757,7 @@ _This is an automated request from the Tour De WONDER website._`;
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-accent text-accent-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-accent text-accent-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>

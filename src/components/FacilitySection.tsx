@@ -41,7 +41,7 @@ const FacilitySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <img src={img} alt="Kashmir sunset" className="rounded-2xl w-full h-80 lg:h-96 object-cover shadow-lg" />
+            <img src={img} alt="Kashmir sunset" className="rounded-2xl w-full h-64 sm:h-80 lg:h-96 object-cover shadow-lg" />
           </motion.div>
         </div>
       </div>
