@@ -1,7 +1,21 @@
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+
+  const handleLinkClick = (href: string) => {
+    if (href.startsWith("/#")) {
+      const sectionId = href.slice(2);
+      if (location.pathname === "/") {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
   return (
     <footer className="bg-foreground text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
@@ -37,27 +51,19 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               {[
-                { label: "About Us", href: "#about" },
+                { label: "About Us", href: "/#about" },
                 { label: "Custom Booking", href: "/booking" },
-                { label: "Contact Us", href: "#testimonials" },
+                { label: "Contact Us", href: "/#testimonials" },
                 { label: "Refund Policies", href: "/refund-policies" },
               ].map((link) => (
                 <li key={link.label}>
-                  {link.href.startsWith("/") ? (
-                    <Link
-                      to={link.href}
-                      className="text-sm text-white/50 hover:text-white transition-colors duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <a
-                      href={link.href}
-                      className="text-sm text-white/50 hover:text-white transition-colors duration-300"
-                    >
-                      {link.label}
-                    </a>
-                  )}
+                  <Link
+                    to={link.href}
+                    onClick={() => handleLinkClick(link.href)}
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, ArrowUpRight } from "lucide-react";
 
 const navLinks = [
-  { label: "Destinations", href: "#destinations" },
-  { label: "Hotels", href: "#hotels" },
-  { label: "Tour & Treks", href: "#treks" },
-  { label: "Help", href: "#facility" },
-  { label: "More Inquiry", href: "#testimonials" },
+  { label: "Destinations", href: "/#destinations" },
+  { label: "Hotels", href: "/#hotels" },
+  { label: "Tour & Treks", href: "/#treks" },
+  { label: "Help", href: "/#facility" },
+  { label: "More Inquiry", href: "/#testimonials" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -28,6 +30,19 @@ const Navbar = () => {
     }
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
+
+  const handleNavClick = (href: string) => {
+    setMobileOpen(false);
+    if (href.startsWith("/#")) {
+      const sectionId = href.slice(2);
+      if (location.pathname === "/") {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
 
   return (
     <>
@@ -48,25 +63,26 @@ const Navbar = () => {
               : "py-5"
           }`}
         >
-          <a href="#" className="flex items-center gap-1.5 group">
+          <Link to="/" className="flex items-center gap-1.5 group">
             <span className="font-['Playfair_Display'] text-lg md:text-xl font-bold text-foreground tracking-tight">
               Tour De
             </span>
             <span className="font-['Playfair_Display'] text-lg md:text-xl font-bold text-primary tracking-tight">
               WONDER
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
+                onClick={() => handleNavClick(link.href)}
                 className="relative px-4 py-2 text-sm font-medium text-foreground/60 hover:text-foreground transition-colors duration-300 group"
               >
                 {link.label}
                 <span className="absolute bottom-1 left-4 right-4 h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -78,13 +94,13 @@ const Navbar = () => {
               <Phone size={14} strokeWidth={1.5} />
               <span>+91 6006 288256</span>
             </a>
-            <a
-              href="/booking"
+            <Link
+              to="/booking"
               className="btn-primary text-xs flex items-center gap-1.5 group"
             >
               Book Now
               <ArrowUpRight size={14} strokeWidth={2} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-            </a>
+            </Link>
           </div>
 
           <button
@@ -148,9 +164,8 @@ const Navbar = () => {
 
                 <nav className="flex-1 flex flex-col px-6 py-4">
                   {navLinks.map((link, i) => (
-                    <motion.a
+                    <motion.div
                       key={link.label}
-                      href={link.href}
                       initial={{ opacity: 0, x: 24 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
@@ -158,16 +173,20 @@ const Navbar = () => {
                         delay: 0.1 + i * 0.06,
                         ease: [0.16, 1, 0.3, 1],
                       }}
-                      onClick={() => setMobileOpen(false)}
-                      className="py-4 border-b border-border/50 text-foreground/70 hover:text-foreground text-lg font-medium transition-colors duration-300 flex items-center justify-between group"
                     >
-                      {link.label}
-                      <ArrowUpRight
-                        size={16}
-                        strokeWidth={1.5}
-                        className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                      />
-                    </motion.a>
+                      <Link
+                        to={link.href}
+                        onClick={() => handleNavClick(link.href)}
+                        className="py-4 border-b border-border/50 text-foreground/70 hover:text-foreground text-lg font-medium transition-colors duration-300 flex items-center justify-between group"
+                      >
+                        {link.label}
+                        <ArrowUpRight
+                          size={16}
+                          strokeWidth={1.5}
+                          className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                        />
+                      </Link>
+                    </motion.div>
                   ))}
                 </nav>
 
@@ -182,16 +201,20 @@ const Navbar = () => {
                     <Phone size={16} strokeWidth={1.5} />
                     +91 6006 288256
                   </motion.a>
-                  <motion.a
-                    href="/booking"
+                  <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.6 }}
-                    className="btn-primary w-full flex items-center justify-center gap-2 group"
                   >
-                    Book Now
-                    <ArrowUpRight size={16} strokeWidth={2} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                  </motion.a>
+                    <Link
+                      to="/booking"
+                      onClick={() => setMobileOpen(false)}
+                      className="btn-primary w-full flex items-center justify-center gap-2 group"
+                    >
+                      Book Now
+                      <ArrowUpRight size={16} strokeWidth={2} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
