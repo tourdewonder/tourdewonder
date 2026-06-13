@@ -1,73 +1,91 @@
-# Welcome to your Lovable project
+# TourDeWonder
 
-## Project info
+A modern travel and tourism website showcasing destinations, deals, experiences, and booking services. Built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Tech Stack
 
-## How can I edit this code?
+- **Framework:** React 18 + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS + shadcn/ui
+- **State Management:** TanStack React Query
+- **Routing:** React Router v6
+- **Forms:** React Hook Form + Zod validation
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Testing:** Vitest + Testing Library
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
+### Prerequisites
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- Node.js 18+ (install via [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+- npm or bun
 
-Changes made via Lovable will be committed automatically to this repo.
+### Installation
 
-**Use your preferred IDE**
+```bash
+git clone <your-repo-url>
+cd tourdewonder-
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Environment Variables
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Copy `.env.example` to `.env` and configure:
 
-Follow these steps:
+```env
+VITE_JSONBIN_BIN_ID=your_bin_id_here
+VITE_JSONBIN_API_KEY=your_api_key_here
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Sign up at [JSONBin.io](https://jsonbin.io) to get your credentials for persistent review storage.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Development
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app starts at `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Commands
 
-**Use GitHub Codespaces**
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run build:dev` | Development build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+| `npm run test` | Run tests |
+| `npm run test:watch` | Run tests in watch mode |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/       # Reusable UI components
+│   └── ui/          # shadcn/ui components
+├── pages/           # Route pages
+├── hooks/           # Custom React hooks
+├── lib/             # Utilities and helpers
+├── assets/          # Static assets
+└── test/            # Test files
+```
 
-This project is built with:
+## Routes
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+| Path | Page |
+|------|------|
+| `/` | Home page with hero, destinations, deals, experiences |
+| `/booking` | Booking form |
+| `/refund-policies` | Refund and cancellation policies |
+| `*` | 404 Not Found |
 
-## How can I deploy this project?
+## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Open [Lovable](https://lovable.dev) and click Share → Publish, or deploy the `dist/` folder to any static host (Vercel, Netlify, etc.).
 
-## Can I connect a custom domain to my Lovable project?
+### Custom Domain
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Navigate to Project → Settings → Domains in Lovable to connect a custom domain. [Learn more](https://docs.lovable.dev/features/custom-domain#custom-domain).
