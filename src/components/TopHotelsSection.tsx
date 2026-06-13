@@ -8,7 +8,7 @@ const hotels = [
     image: "/hotels/Hotel Royal Hillton.png",
     rating: 4.8,
     reviews: 234,
-    price: "₹4,500",
+    price: "₹10,000",
     amenities: ["wifi", "parking", "dining"],
   },
   {
@@ -16,7 +16,7 @@ const hotels = [
     image: "/hotels/Hotel Pine and Peak.png",
     rating: 4.7,
     reviews: 189,
-    price: "₹3,800",
+    price: "₹28,000",
     amenities: ["wifi", "dining"],
   },
   {
@@ -24,7 +24,7 @@ const hotels = [
     image: "/hotels/The Khyber Himalayan Resort.jpg",
     rating: 4.9,
     reviews: 412,
-    price: "₹12,500",
+    price: "₹26,000",
     amenities: ["wifi", "parking", "dining"],
   },
   {
@@ -32,7 +32,7 @@ const hotels = [
     image: "/hotels/Hotel Fortune Resort.jpg",
     rating: 4.6,
     reviews: 156,
-    price: "₹5,200",
+    price: "₹13,000",
     amenities: ["wifi", "parking"],
   },
   {
@@ -40,7 +40,7 @@ const hotels = [
     image: "/hotels/Hotel Glacier Heights.jpg",
     rating: 4.5,
     reviews: 98,
-    price: "₹3,200",
+    price: "₹4,500",
     amenities: ["wifi", "dining"],
   },
   {
@@ -48,7 +48,7 @@ const hotels = [
     image: "/hotels/front-facade.jpg",
     rating: 4.4,
     reviews: 167,
-    price: "₹2,800",
+    price: "₹3,500",
     amenities: ["wifi", "parking", "dining"],
   },
 ];

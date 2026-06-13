@@ -13,9 +13,9 @@ const tourPackages = [
 ];
 
 const hotels = [
-  { title: "Hotel Royal Hillton", location: "Srinagar", price: "₹4,500", rating: 4.8, image: "/hotels/Hotel Royal Hillton.png" },
-  { title: "Hotel Asian Park", location: "Pahalgam", price: "₹2,800", rating: 4.4, image: "/hotels/front-facade.jpg" },
-  { title: "The Khyber Resort", location: "Gulmarg", price: "₹12,500", rating: 4.9, image: "/hotels/The Khyber Himalayan Resort.jpg" },
+  { title: "Hotel Royal Hillton", location: "Srinagar", price: "₹10,000", rating: 4.8, image: "/hotels/Hotel Royal Hillton.png" },
+  { title: "Hotel Asian Park", location: "Pahalgam", price: "₹3,500", rating: 4.4, image: "/hotels/front-facade.jpg" },
+  { title: "The Khyber Resort", location: "Gulmarg", price: "₹26,000", rating: 4.9, image: "/hotels/The Khyber Himalayan Resort.jpg" },
 ];
 
 const FeaturedExperiences = () => {
