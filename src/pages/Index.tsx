@@ -15,10 +15,16 @@ import DealsSection from "@/components/DealsSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import useHead from "@/hooks/useHead";
 
 const Index = () => {
+  useHead({
+    title: "Tour De Wonder | Kashmir Travel Packages, Houseboats, Treks & Hotels",
+    description: "Discover Kashmir with Tour De Wonder. Book houseboats on Dal Lake, trekking packages, affordable vacation bundles, and top hotels. Best travel agency in Srinagar, J&K.",
+  });
+
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div id="main-content" className="min-h-screen overflow-x-hidden">
       <Navbar />
       <HeroSection />
       <AboutSection />

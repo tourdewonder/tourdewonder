@@ -19,6 +19,7 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import useHead from "@/hooks/useHead";
 
 // Tour services options
 const tourServices = [
@@ -75,6 +76,12 @@ const Booking = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const lakeData = location.state as { name: string; location: string; altitude: string; waterSource: string; description: string; bestTimeToVisit: string; trekkingRoute: string; category: string; image: string } | undefined;
+
+  useHead({
+    title: lakeData ? `Book ${lakeData.name} Tour | Tour De Wonder` : "Book Your Kashmir Tour | Tour De Wonder",
+    description: "Book your dream Kashmir tour with Tour De Wonder. Choose from houseboats, trekking packages, hotel bookings, and ride services in Srinagar, Gulmarg, Pahalgam & Sonamarg.",
+  });
+
   const [serviceType, setServiceType] = useState<"tour" | "ride" | "hotel">("tour");
   const handleServiceTypeChange = (type: "tour" | "ride" | "hotel") => {
     setServiceType(type);
@@ -516,42 +523,50 @@ _This is an automated request from the Tour De WONDER website._`;
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* First Name */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
+                    <label htmlFor="booking-firstName" className="text-sm font-medium text-foreground">
                       First Name <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="booking-firstName"
                       type="text"
                       value={fullForm.firstName}
                       onChange={(e) => setFullForm({ ...fullForm, firstName: e.target.value })}
                       placeholder="Enter your first name"
+                      aria-required="true"
+                      aria-invalid={errors.firstName ? "true" : undefined}
+                      aria-describedby={errors.firstName ? "booking-firstName-error" : undefined}
                       className={`w-full px-4 py-3 rounded-xl border ${
                         errors.firstName ? "border-red-500" : "border-border"
                       } bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                     />
                     {errors.firstName && (
-                      <p className="text-sm text-red-500">{errors.firstName}</p>
+                      <p id="booking-firstName-error" className="text-sm text-red-500">{errors.firstName}</p>
                     )}
                   </div>
 
                   {/* Phone Number */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
+                    <label htmlFor="booking-phone" className="text-sm font-medium text-foreground">
                       Phone Number <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
                       <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <input
+                        id="booking-phone"
                         type="tel"
                         value={fullForm.phone}
                         onChange={(e) => setFullForm({ ...fullForm, phone: e.target.value })}
                         placeholder="Enter your phone number"
+                        aria-required="true"
+                        aria-invalid={errors.phone ? "true" : undefined}
+                        aria-describedby={errors.phone ? "booking-phone-error" : undefined}
                         className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
                           errors.phone ? "border-red-500" : "border-border"
                         } bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                       />
                     </div>
                     {errors.phone && (
-                      <p className="text-sm text-red-500">{errors.phone}</p>
+                      <p id="booking-phone-error" className="text-sm text-red-500">{errors.phone}</p>
                     )}
                   </div>
                 </div>
@@ -559,12 +574,13 @@ _This is an automated request from the Tour De WONDER website._`;
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* Email */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
+                    <label htmlFor="booking-email" className="text-sm font-medium text-foreground">
                       Email Address
                     </label>
                     <div className="relative">
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <input
+                        id="booking-email"
                         type="email"
                         value={fullForm.email}
                         onChange={(e) => setFullForm({ ...fullForm, email: e.target.value })}
@@ -576,12 +592,13 @@ _This is an automated request from the Tour De WONDER website._`;
 
                   {/* Date of Arrival */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
+                    <label htmlFor="booking-arrival" className="text-sm font-medium text-foreground">
                       Date of Arrival
                     </label>
                     <div className="relative">
                       <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <input
+                        id="booking-arrival"
                         type="date"
                         value={fullForm.arrivalDate}
                         onChange={(e) => setFullForm({ ...fullForm, arrivalDate: e.target.value })}
@@ -594,12 +611,13 @@ _This is an automated request from the Tour De WONDER website._`;
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* Number of Persons */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
+                    <label htmlFor="booking-persons" className="text-sm font-medium text-foreground">
                       Number of Persons
                     </label>
                     <div className="relative">
                       <Users className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <select
+                        id="booking-persons"
                         value={fullForm.persons}
                         onChange={(e) => setFullForm({ ...fullForm, persons: e.target.value })}
                         className="w-full pl-12 pr-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all appearance-none"
@@ -615,12 +633,13 @@ _This is an automated request from the Tour De WONDER website._`;
 
                   {/* Tour Service */}
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">
+                    <label htmlFor="booking-service" className="text-sm font-medium text-foreground">
                       {serviceType === "tour" ? "Tour Service" : serviceType === "ride" ? "Ride Service" : "Hotel Service"}
                     </label>
                     <div className="relative">
                       <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                       <select
+                        id="booking-service"
                         value={fullForm.tourService}
                         onChange={(e) => setFullForm({ ...fullForm, tourService: e.target.value })}
                         className="w-full pl-12 pr-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all appearance-none"
@@ -639,12 +658,13 @@ _This is an automated request from the Tour De WONDER website._`;
 
                 {/* Message */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
+                  <label htmlFor="booking-message" className="text-sm font-medium text-foreground">
                     Message / Special Requests
                   </label>
                   <div className="relative">
                     <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
                     <textarea
+                      id="booking-message"
                       value={fullForm.message}
                       onChange={(e) => setFullForm({ ...fullForm, message: e.target.value })}
                       placeholder="Tell us about your travel plans, preferences, or any special requirements..."
@@ -697,53 +717,62 @@ _This is an automated request from the Tour De WONDER website._`;
               <form onSubmit={handleQuickSubmit} className="space-y-6">
                 {/* Name */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
+                  <label htmlFor="quick-name" className="text-sm font-medium text-foreground">
                     Your Name <span className="text-red-500">*</span>
                   </label>
                   <input
+                    id="quick-name"
                     type="text"
                     value={quickForm.name}
                     onChange={(e) => setQuickForm({ ...quickForm, name: e.target.value })}
                     placeholder="Enter your name"
+                    aria-required="true"
+                    aria-invalid={errors.name ? "true" : undefined}
+                    aria-describedby={errors.name ? "quick-name-error" : undefined}
                     className={`w-full px-4 py-3 rounded-xl border ${
                       errors.name ? "border-red-500" : "border-border"
                     } bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                   />
                   {errors.name && (
-                    <p className="text-sm text-red-500">{errors.name}</p>
+                    <p id="quick-name-error" className="text-sm text-red-500">{errors.name}</p>
                   )}
                 </div>
 
                 {/* Phone Number */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
+                  <label htmlFor="quick-phone" className="text-sm font-medium text-foreground">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                     <input
+                      id="quick-phone"
                       type="tel"
                       value={quickForm.phone}
                       onChange={(e) => setQuickForm({ ...quickForm, phone: e.target.value })}
                       placeholder="Enter your phone number"
+                      aria-required="true"
+                      aria-invalid={errors.phone ? "true" : undefined}
+                      aria-describedby={errors.phone ? "quick-phone-error" : undefined}
                       className={`w-full pl-12 pr-4 py-3 rounded-xl border ${
                         errors.phone ? "border-red-500" : "border-border"
                       } bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all`}
                     />
                   </div>
                   {errors.phone && (
-                    <p className="text-sm text-red-500">{errors.phone}</p>
+                    <p id="quick-phone-error" className="text-sm text-red-500">{errors.phone}</p>
                   )}
                 </div>
 
                 {/* Message */}
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">
+                  <label htmlFor="quick-message" className="text-sm font-medium text-foreground">
                     Message (Optional)
                   </label>
                   <div className="relative">
                     <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-muted-foreground" />
                     <textarea
+                      id="quick-message"
                       value={quickForm.message}
                       onChange={(e) => setQuickForm({ ...quickForm, message: e.target.value })}
                       placeholder="Any specific tour or dates you're interested in..."

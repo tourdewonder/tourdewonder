@@ -68,10 +68,15 @@ const DestinationsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex gap-2 flex-wrap"
+            role="tablist"
+            aria-label="Destination regions"
           >
             {tabs.map((tab) => (
               <button
                 key={tab}
+                role="tab"
+                aria-selected={activeTab === tab}
+                aria-controls={`destinations-panel-${tab.toLowerCase()}`}
                 onClick={() => setActiveTab(tab)}
                 className={`relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeTab === tab
@@ -88,6 +93,9 @@ const DestinationsSection = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
+            role="tabpanel"
+            id={`destinations-panel-${activeTab.toLowerCase()}`}
+            aria-label={`${activeTab} packages`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

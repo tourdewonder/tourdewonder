@@ -206,10 +206,11 @@ const TestimonialSection = () => {
           </h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="font-sans text-sm text-muted-foreground mb-1 block">
+              <label htmlFor="review-name" className="font-sans text-sm text-muted-foreground mb-1 block">
                 Your Name
               </label>
               <Input
+                id="review-name"
                 type="text"
                 placeholder="Enter your name"
                 value={newReview.name}
@@ -220,7 +221,7 @@ const TestimonialSection = () => {
             </div>
             
             <div>
-              <label className="font-sans text-sm text-muted-foreground mb-1 block">
+              <label htmlFor="review-rating" className="font-sans text-sm text-muted-foreground mb-1 block">
                 Your Rating
               </label>
               <StarRating
@@ -232,10 +233,11 @@ const TestimonialSection = () => {
             </div>
 
             <div>
-              <label className="font-sans text-sm text-muted-foreground mb-1 block">
+              <label htmlFor="review-text" className="font-sans text-sm text-muted-foreground mb-1 block">
                 Your Review
               </label>
               <Textarea
+                id="review-text"
                 placeholder="Share your experience with us..."
                 value={newReview.text}
                 onChange={(e) => setNewReview({ ...newReview, text: e.target.value })}

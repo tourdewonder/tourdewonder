@@ -88,7 +88,7 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -178,7 +178,7 @@ const Navbar = () => {
                   </button>
                 </div>
 
-                <nav className="flex-1 px-6 py-4">
+                <nav className="flex-1 px-6 py-4" aria-label="Mobile navigation">
                   {navLinks.map((link, i) => (
                     <motion.div
                       key={link.label}

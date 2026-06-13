@@ -49,6 +49,7 @@ const Footer = () => {
             <h4 className="text-[11px] font-medium tracking-[0.2em] uppercase text-white/40 mb-5">
               Quick Links
             </h4>
+            <nav aria-label="Quick links">
             <ul className="space-y-3">
               {[
                 { label: "About Us", href: "/#about" },
@@ -67,6 +68,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+            </nav>
           </div>
 
           <div className="lg:col-span-3">

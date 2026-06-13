@@ -184,6 +184,9 @@ const NaturalSpringsLakesSection = () => {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="relative bg-white rounded-[1.5rem] shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden"
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${selectedLake.name} details`}
             >
               <div className="relative">
                 <img
@@ -195,6 +198,7 @@ const NaturalSpringsLakesSection = () => {
                 <button
                   onClick={() => setSelectedLake(null)}
                   className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors duration-300"
+                  aria-label="Close dialog"
                 >
                   <X size={18} strokeWidth={1.5} />
                 </button>

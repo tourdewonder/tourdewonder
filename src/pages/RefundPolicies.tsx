@@ -1,9 +1,15 @@
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import useHead from "@/hooks/useHead";
 
 const RefundPolicies = () => {
+  useHead({
+    title: "Refund Policies | Tour De Wonder",
+    description: "Tour De Wonder refund and cancellation policies for Kashmir tour packages, hotel bookings, and ride services. Fair and transparent refund process.",
+  });
+
   return (
-    <div className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background">
       {/* Header */}
       <div className="bg-primary text-primary-foreground py-8">
         <div className="container mx-auto px-4 sm:px-6">
@@ -103,7 +109,7 @@ const RefundPolicies = () => {
 
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
