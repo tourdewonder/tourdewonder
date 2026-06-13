@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Hotels", href: "/#hotels" },
   { label: "Tour & Treks", href: "/#treks" },
   { label: "Help", href: "/#facility" },
-  { label: "More Inquiry", href: "/#testimonials" },
+  { label: "Reviews", href: "/#testimonials" },
 ];
 
 const Navbar = () => {

@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, MapPin, Star } from "lucide-react";
-import heroBg from "@/assets/hero-kashmir.jpg";
+const heroBg = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80";
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

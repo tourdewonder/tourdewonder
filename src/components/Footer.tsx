@@ -87,6 +87,17 @@ const Footer = () => {
               </li>
               <li>
                 <a
+                  href="tel:+918491853084"
+                  className="flex items-center gap-3 text-sm text-white/50 hover:text-white transition-colors duration-300 group"
+                >
+                  <span className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors duration-300">
+                    <Phone size={14} strokeWidth={1.5} className="text-accent" />
+                  </span>
+                  +91 84918 53084
+                </a>
+              </li>
+              <li>
+                <a
                   href="mailto:tourdewonder89@gmail.com"
                   className="flex items-center gap-3 text-sm text-white/50 hover:text-white transition-colors duration-300 group"
                 >
