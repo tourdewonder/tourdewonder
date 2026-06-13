@@ -139,7 +139,7 @@ const Booking = () => {
   };
 
   // WhatsApp number
-  const WHATSAPP_NUMBER = "916006288256";
+  const WHATSAPP_NUMBER = "918491853084";
 
   // Generate WhatsApp message for full form
   const generateFullFormMessage = () => {
